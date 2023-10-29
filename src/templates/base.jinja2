@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" class="has-background-grey-lighter">
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="noindex">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="AnisongDB Mod Tool">
+    <meta name="keywords" content="">
+    <meta name="robots" content="noindex">
+    <link rel="icon"
+          type="image/x-icon"
+          href="{{ url_for('/.static_file', filename='images/favicon.ico') }}">
+    <title>AnisongDB Mod Tool</title>
+    <!-- custom css -->
+    <link rel="stylesheet"
+          href="{{ url_for('/.static_file', filename='css/main.css') }}">
+    <link rel="stylesheet"
+          href="{{ url_for('/.static_file', filename='css/modal.css') }}">
+    <!-- custom js -->
+    <script src="{{ url_for('/.static_file', filename='js/utils.js') }}"></script>
+    <!-- Bulma -->
+    <link rel="stylesheet"
+          href="{{ url_for('/.static_file', filename='node_modules/bulma/css/bulma.min.css') }}">
+    <!-- Sortablejs -->
+    <script src="{{ url_for('/.static_file', filename='node_modules/sortablejs/Sortable.min.js') }}"></script>
+    <!-- autocomplete.js -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.min.css">
+    <script src="{{ url_for('/.static_file', filename='node_modules/@tarekraafat/autocomplete.js/dist/autocomplete.js') }}"></script>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/d8c6bef170.js"
+            crossorigin="anonymous"></script>
+    {% include "header.jinja2" %}
+    {% block head %}
+    {% endblock head %}
+  </head>
+  <body>
+    <div class="hero is-fullheight">
+      <section class="section">
+        {% block body %}
+        {% endblock body %}
+      </section>
+    </div>
+  </body>
+  {% include "footer.jinja2" %}
+</html>

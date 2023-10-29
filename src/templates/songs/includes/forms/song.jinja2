@@ -1,0 +1,163 @@
+<form method="post" onsubmit="enableField()">
+    {{ form.hidden_tag() }}
+    <div class="columns">
+        <!-- song_name -->
+        <div class="column">
+            <div class="field">
+                <label class="label" for="song_name">Song Name</label>
+                {{ form.song_name(class="input", disabled="disabled") }}
+                {% for error in form.song_name.errors %}<span class="errors">{{ error }}</span>{% endfor %}
+            </div>
+        </div>
+        <!-- original_song_name -->
+        <div class="column">
+            <div class="field">
+                <label class="label" for="original_song_name">Original Song Name</label>
+                {{ form.original_song_name(class="input") }}
+                {% for error in form.original_song_name.errors %}<span class="errors">{{ error }}</span>{% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="columns">
+        <!-- song_artist -->
+        <div class="column">
+            <div class="field">
+                <label class="label" for="song_artist">Song Artist</label>
+                {{ form.song_artist(class="input", disabled="disabled") }}
+                {% for error in form.song_artist.errors %}<span class="errors">{{ error }}</span>{% endfor %}
+            </div>
+        </div>
+        <!-- original_song_artist -->
+        <div class="column">
+            <div class="field">
+                <label class="label" for="original_song_artist">Original Song Artist</label>
+                {{ form.original_song_artist(class="input") }}
+                {% for error in form.original_song_artist.errors %}<span class="errors">{{ error }}</span>{% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="columns">
+        <!-- song_composer -->
+        <div class="column">
+            <div class="field">
+                <label class="label" for="song_composer">Song Composer</label>
+                {{ form.song_composer(class="input") }}
+                {% for error in form.song_composer.errors %}<span class="errors">{{ error }}</span>{% endfor %}
+            </div>
+        </div>
+        <!-- original_song_composer -->
+        <div class="column">
+            <div class="field">
+                <label class="label" for="original_song_composer">Original Song Composer</label>
+                {{ form.original_song_composer(class="input") }}
+                {% for error in form.original_song_composer.errors %}<span class="errors">{{ error }}</span>{% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="columns">
+        <!-- song_arranger -->
+        <div class="column">
+            <div class="field">
+                <label class="label" for="song_arranger">Song Arranger</label>
+                {{ form.song_arranger(class="input") }}
+                {% for error in form.song_arranger.errors %}<span class="errors">{{ error }}</span>{% endfor %}
+            </div>
+        </div>
+        <!-- original_song_arranger -->
+        <div class="column">
+            <div class="field">
+                <label class="label" for="original_song_arranger">Original Song Arranger</label>
+                {{ form.original_song_arranger(class="input") }}
+                {% for error in form.original_song_arranger.errors %}<span class="errors">{{ error }}</span>{% endfor %}
+            </div>
+        </div>
+    </div>
+    <fieldset disabled id="fieldset">
+        <div class="columns">
+            <!-- id_song_category -->
+            <div class="column is-3">
+                <div class="field" disabled>
+                    <label class="label" for="id_song_category">Song Category</label>
+                    <div class="select">
+                        <div class="control">{{ form.id_song_category }}</div>
+                    </div>
+                    {% for error in form.id_song_category.errors %}<span class="errors">{{ error }}</span>{% endfor %}
+                </div>
+            </div>
+            <!-- id_song_type -->
+            <div class="column is-3">
+                <div class="field" disabled>
+                    <label class="label" for="id_song_type">Song Type</label>
+                    <div class="select">
+                        <div class="control">{{ form.id_song_type }}</div>
+                    </div>
+                    {% for error in form.id_song_type.errors %}<span class="errors">{{ error }}</span>{% endfor %}
+                </div>
+            </div>
+            <!-- song_number -->
+            <div class="column">
+                <div class="field">
+                    <label class="label" for="song_number">Song Number</label>
+                    {{ form.song_number(class="input") }}
+                    {% for error in form.song_number.errors %}<span class="errors">{{ error }}</span>{% endfor %}
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <br />
+    <!-- song_difficulty -->
+    <div class="field">
+        <label class="label" for="song_difficulty">Song Difficulty</label>
+        {{ form.song_difficulty(class="input", disabled="disabled") }}
+        {% for error in form.song_difficulty.errors %}<span class="errors">{{ error }}</span>{% endfor %}
+    </div>
+    <div class="columns">
+        <div class="column">
+            <!-- HQ -->
+            <div class="field">
+                <label class="label" for="HQ">HQ (720p webm)</label>
+                {{ form.HQ(class="input", disabled="disabled") }}
+                {% for error in form.HQ.errors %}<span class="errors">{{ error }}</span>{% endfor %}
+            </div>
+        </div>
+        <div class="column">
+            <!-- MQ -->
+            <div class="field">
+                <label class="label" for="MQ">MQ (480p webm)</label>
+                {{ form.MQ(class="input", disabled="disabled") }}
+                {% for error in form.MQ.errors %}<span class="errors">{{ error }}</span>{% endfor %}
+            </div>
+        </div>
+        <div class="column">
+            <!-- audio -->
+            <div class="field">
+                <label class="label" for="audio">Audio (mp3)</label>
+                {{ form.audio(class="input", disabled="disabled") }}
+                {% for error in form.audio.errors %}<span class="errors">{{ error }}</span>{% endfor %}
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="field is-grouped">
+        <div class="control">
+            <button type="submit" class="button is-link">Save Changes</button>
+        </div>
+        <div class="control">
+            <button type="reset" class="button is-link is-light">Reset form</button>
+        </div>
+    </div>
+</form>
+<br />
+<br />
+<script>
+    function enableField() {
+        document.getElementById("song_name").removeAttribute("disabled");
+        document.getElementById("song_artist").removeAttribute("disabled");
+        document.getElementById("song_composer").removeAttribute("disabled");
+        document.getElementById("song_arranger").removeAttribute("disabled");
+        document.getElementById("HQ").removeAttribute("disabled");
+        document.getElementById("MQ").removeAttribute("disabled");
+        document.getElementById("audio").removeAttribute("disabled");
+        document.getElementById("fieldset").removeAttribute("disabled");
+    }
+</script>

@@ -1,0 +1,41 @@
+<div class="column is-3" style="position: relative">
+       <input class="input is-small"
+              type="text"
+              id="add-artist-{{ idElement }}"
+              placeholder="Search artist"
+              onfocus="handleArtistSearch('{{ idElement }}')"
+              oninput="handleArtistSearch('{{ idElement }}')"
+              onblur="hideArtistDropdown('{{ idElement }}')">
+       <input type="hidden" id="hidden-artist-{{ idElement }}" value="">
+       <div class="autocomplete-dropdown"
+            id="add-artist-dropdown-{{ idElement }}"></div>
+</div>
+<div class="column is-3" style="position: relative">
+       <input class="input is-small"
+              type="text"
+              id="add-line-up-{{ idElement }}"
+              onfocus="handleLineUp('{{ idElement }}')"
+              oninput="handleLineUp('{{ idElement }}')"
+              onblur="hideLineUp('{{ idElement }}')">
+       <div class="autocomplete-dropdown"
+            id="add-line-up-dropdown-{{ idElement }}"></div>
+</div>
+<div class="column is-2" style="position: relative">
+       {% if role_type %}
+              <div class="select is-small">
+                     <select id="add-role-type-{{ idElement }}" disabled>
+                            <option>{{ role_type }}</option>
+                     </select>
+              </div>
+       {% else %}
+              <div class="select is-small">
+                     <select id="add-role-type-{{ idElement }}">
+                            <option selected value="1">Vocalist</option>
+                            <option value="2">Backing vocal</option>
+                            <option value="3">Composer</option>
+                            <option value="4">Arranger</option>
+                            <option value="5">Performer</option>
+                     </select>
+              </div>
+       {% endif %}
+</div>

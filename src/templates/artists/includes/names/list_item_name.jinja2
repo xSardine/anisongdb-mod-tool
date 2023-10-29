@@ -1,0 +1,51 @@
+<section class="section">
+    <div class="container">
+        <!-- Display Names -->
+        <div class="box">
+            <div class="columns">
+                <div class="column">
+                    <label class="label is-small">Artist Name</label>
+                </div>
+                <div class="column">
+                    <label class="label is-small">Original Artist Name</label>
+                </div>
+            </div>
+            <!-- List of Names -->
+            <ul id="nameList" class="sortable-list">
+                {% for name in artist.artist_names|sort(attribute='order') %}
+                    {% with id_name = name.id, artist_name = name.artist_name, original_artist_name = name.original_artist_name %}
+                        {% include "artists/includes/names/item_name.jinja2" %}
+                    {% endwith %}
+                {% endfor %}
+            </ul>
+            <br />
+            <!-- Add Name Form  TODO go through wtform ? -->
+            <div class="field is-grouped">
+                <p class="control is-expanded">
+                    <input id="newNameInput"
+                           class="input is-normal"
+                           type="text"
+                           placeholder="New Name">
+                </p>
+                <p class="control is-expanded">
+                    <input id="newOriginalNameInput"
+                           class="input is-normal"
+                           type="text"
+                           placeholder="Original Name">
+                </p>
+                <p class="control">
+                    <button id="addNameButton" class="button is-normal is-info">Add Name</button>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+document.addEventListener("DOMContentLoaded", function () { 
+    // Create sortable list
+    createSortableNameList("nameList");
+
+    // Event listener for the "Add Name" button
+    document.getElementById("addNameButton").addEventListener("click", addName);
+});
+</script>

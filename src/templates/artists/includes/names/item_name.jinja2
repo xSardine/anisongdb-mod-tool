@@ -1,0 +1,26 @@
+<li id="name-item-{{ id_name }}"
+    class="sortable-item"
+    data-id="{{ id_name }}">
+    <div class="columns">
+        <div class="column is-5">
+            <input type="text"
+                   class="input is-small"
+                   id="name-{{ id_name }}"
+                   value="{{ artist_name }}">
+        </div>
+        <div class="column is-5">
+            <input type="text"
+                   class="input is-small"
+                   id="originalName-{{ id_name }}"
+                   value="{{ original_artist_name or '' }}">
+        </div>
+        <div class="column is-2">
+            <div class="buttons">
+                <button class="button is-small is-success"
+                        onclick="editArtistName({{ id_name }})">Save</button>
+                <button class="button is-small is-danger"
+                        onclick="removeArtistName({{ id_name }})">Delete</button>
+            </div>
+        </div>
+    </div>
+</li>

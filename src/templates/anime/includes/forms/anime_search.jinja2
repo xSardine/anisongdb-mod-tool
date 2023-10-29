@@ -1,0 +1,26 @@
+<form id="searchForm" method="post">
+    {{ form.hidden_tag() }}
+    <!-- name -->
+    <div class="field">
+        <label class="label" for="anime_name">Anime Name</label>
+        {{ form.anime_name(class="input") }}
+        {% for error in form.anime_name.errors %}<span class="errors">{{ error }}</span>{% endfor %}
+    </div>
+    <div class="field is-grouped">
+        <div class="control">
+            <button type="submit" class="button is-link">Search</button>
+        </div>
+        <div class="control">
+            <button type="button" onclick="resetSearch()" class="button is-link is-light">Reset search</button>
+        </div>
+    </div>
+</form>
+<br />
+<br />
+<script>
+    function resetSearch() {
+        document.getElementById("anime_name").value = "";
+        // submit form
+        document.getElementById("searchForm").submit();
+    }
+</script>

@@ -1,0 +1,26 @@
+<section class="section">
+    <div class="container">
+        <!-- Display Names -->
+        <div class="box">
+            <div class="columns">
+                <div class="column is-3">
+                    <label class="label is-small">Anime Name</label>
+                </div>
+                <div class="column is-3">
+                    <label class="label is-small">Original Anime Name</label>
+                </div>
+                <div class="column is-3">
+                    <label class="label is-small">Name Type</label>
+                </div>
+            </div>
+            <!-- List of Names -->
+            <ul id="nameList">
+                {% for name in anime.names %}
+                    {% with id_name = name.id, anime_name = name.anime_name, original_anime_name = name.original_anime_name, anime_name_type = name.anime_name_type.anime_name_type %}
+                        {% include "anime/includes/names/item_name.jinja2" %}
+                    {% endwith %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>

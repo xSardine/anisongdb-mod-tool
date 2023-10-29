@@ -1,0 +1,97 @@
+{% if credits_path %}
+    <a href="/{{ credits_path }}" target="_blank">
+        <img id="image-preview"
+             src="/{{ credits_path }}"
+             alt="Song Image Preview"
+             width="500"
+             height="500">
+    </a>
+{% endif %}
+<div id="file-js-example" class="file has-name">
+    <label class="file-label">
+        <input class="file-input"
+               type="file"
+               name="resume"
+               accept=".png, .jpg, .jpeg, .webp">
+        <span class="file-cta">
+            <span class="file-icon">
+                <i class="fas fa-upload"></i>
+            </span>
+            <span class="file-label">Choose an image file…</span>
+        </span>
+        <span class="file-name">No file uploaded</span>
+    </label>
+    <button id="validateBtn" class="button is-primary" style="display:none;">Update credits</button>
+</div>
+<script>
+const fileInput = document.querySelector('#file-js-example input[type=file]');
+const validateBtn = document.querySelector('#validateBtn');
+const imagePreview = document.querySelector('#image-preview'); // Add an id to the img tag
+
+fileInput.onchange = () => {
+  const fileName = document.querySelector('#file-js-example .file-name');
+  const allowedFormats = ['.png', '.jpg', '.jpeg', '.webp'];
+
+  if (fileInput.files.length > 0) {
+    const file = fileInput.files[0];
+    const fileExtension = '.' + file.name.split('.').pop().toLowerCase();
+
+    // Check if the file format is allowed
+    if (allowedFormats.includes(fileExtension)) {
+      fileName.textContent = file.name;
+      validateBtn.style.display = 'block';
+
+      // Display the new preview
+      displayImagePreview(file);
+    } else {
+      // Display an error message for invalid file format
+      fileName.textContent = 'Invalid file format';
+      validateBtn.style.display = 'none';
+      alert('Invalid file format. Please select a .png, .jpg, .jpeg, or .webp file.');
+
+      // You may choose to clear the file input here if needed
+      fileInput.value = '';
+    }
+  } else {
+    fileName.textContent = 'No file uploaded';
+    validateBtn.style.display = 'none';
+    imagePreview.src = ''; // Clear the preview when no file is selected
+  }
+}
+
+function displayImagePreview(file) {
+  const reader = new FileReader();
+
+  reader.onload = function(e) {
+    // Set the source of the image preview
+    imagePreview.src = e.target.result;
+  };
+
+  // Read the file as a data URL
+  reader.readAsDataURL(file);
+}
+
+validateBtn.onclick = () => {
+  if (fileInput.files.length > 0) {
+    const file = fileInput.files[0];
+    const formData = new FormData();
+    formData.append('file', file);
+
+    fetch('upload/', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => {
+      // Handle the response from the server
+      window.location.reload();
+    })
+    .catch(error => {
+      // Handle errors during the fetch
+      console.error('Error:', error);
+    });
+  } else {
+    // Handle the case where no file is selected
+    console.log('No file selected');
+  }
+}
+</script>

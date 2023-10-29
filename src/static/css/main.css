@@ -1,0 +1,39 @@
+.errors {
+ color: red;
+}
+
+/* Autocomplete dropdown */
+.autocomplete-dropdown {
+    position: absolute;
+    top: 100%; /* Change this if needed */
+    left: 0;
+    width: 100%;
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: black;
+    z-index: 1;
+    display: none;
+}
+
+
+.autocomplete-dropdown.show {
+    display: block;
+}
+
+.autocomplete-option {
+    padding: 8px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.autocomplete-option:hover {
+    background-color: #adadad;
+}
+
+.autocomplete-option.active {
+    background-color: #007bff;
+    color: white;
+}
+/* Autocomplete dropdown */

@@ -1,0 +1,25 @@
+<div id="feedbackModal" class="modal">
+    <div id="modal-background" class="modal-background"></div>
+    <div class="modal-card">
+        <!-- Adjust the width as needed -->
+        <header class="modal-card-head">
+            <p class="modal-card-title">Feedback</p>
+            <button class="delete" aria-label="close" onclick="closeModal()"></button>
+        </header>
+        <section class="modal-card-body">
+            <!-- Message content goes here -->
+        </section>
+        <footer class="modal-card-foot">
+            <!-- Optional footer content -->
+        </footer>
+    </div>
+</div>
+<script>
+    const backgroundModal = document.getElementById("modal-background");
+    // Event listener to close the modal when clicking outside of it
+    feedbackModal.addEventListener("click", function (event) {
+        if (event.target === backgroundModal) {
+            closeModal();
+        }
+    });
+</script>

@@ -1,0 +1,35 @@
+<div class="column is-3">
+    <input class="input is-small"
+           type="text"
+           id="name-{{ link_id }}-{{ link_id_artist }}"
+           value="{{ artist_name }}"
+           disabled>
+</div>
+<div class="column is-3">
+    {% set artist_names = [] %}
+    {% for member in line_up_members %}
+        {{ member }} {% set artist_name = member.member.artist_names[0].artist_name %} {% set _ = artist_names.append(artist_name) %}
+    {% endfor %}
+    <input class="input is-small"
+           type="text"
+           id="line-up-{{ link_id }}-{{ link_id_artist }}"
+           value="{{ id_line_up }}"
+           title='{{ artist_names|join(", ") }}'
+           disabled>
+</div>
+<div class="column is-2">
+    <input class="input is-small"
+           type="text"
+           id="role-type-{{ link_id }}-{{ link_id_artist }}"
+           value="{{ role_type }}"
+           disabled>
+</div>
+<div class="column is-2">
+    <div class="buttons">
+        <button class="button is-small is-danger"
+                onclick="{{ remove_function }}({{ link_id }})">Remove</button>
+        <a class="button is-small is-link"
+           href="{{ url_for('artists.artist_update', id_artist=link_id_artist) }}"
+           target="_blank">See</a>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<li id="name-item-{{ id_name }}"
+    class="sortable-item"
+    data-id="{{ id_name }}">
+    <div class="columns">
+        <div class="column is-3">
+            <input type="text"
+                   class="input is-small"
+                   id="name-{{ id_name }}"
+                   value="{{ anime_name }}"
+                   disabled>
+        </div>
+        <div class="column is-3">
+            <input type="text"
+                   class="input is-small"
+                   id="original-name-{{ id_name }}"
+                   value="{{ original_anime_name or '' }}">
+        </div>
+        <div class="column is-3">
+            <input type="text"
+                   class="input is-small"
+                   id="name-type-{{ id_name }}"
+                   value="{{ anime_name_type }}"
+                   disabled>
+        </div>
+        <div class="column is-2">
+            <div class="buttons">
+                <button class="button is-small is-success"
+                        onclick="editAnimeName({{ id_name }})">Save</button>
+            </div>
+        </div>
+    </div>
+</li>

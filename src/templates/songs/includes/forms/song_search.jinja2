@@ -1,0 +1,39 @@
+<form id="searchForm" method="post">
+    {{ form.hidden_tag() }}
+    <div class="columns">
+        <!-- song_name -->
+        <div class="column">
+            <div class="field">
+                <label class="label" for="song_name">Song Name</label>
+                {{ form.song_name(class="input") }}
+                {% for error in form.song_name.errors %}<span class="errors">{{ error }}</span>{% endfor %}
+            </div>
+        </div>
+        <!-- artist_name -->
+        <div class="column">
+            <div class="field">
+                <label class="label" for="artist_name">Artist Name</label>
+                {{ form.artist_name(class="input") }}
+                {% for error in form.artist_name.errors %}<span class="errors">{{ error }}</span>{% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="field is-grouped">
+        <div class="control">
+            <button type="submit" class="button is-link">Search</button>
+        </div>
+        <div class="control">
+            <button type="button" onclick="resetSearch()" class="button is-link is-light">Reset search</button>
+        </div>
+    </div>
+</form>
+<br />
+<br />
+<script>
+    function resetSearch() {
+        document.getElementById("song_name").value = "";
+        document.getElementById("artist_name").value = "";
+        // submit form
+        document.getElementById("searchForm").submit();
+    }
+</script>

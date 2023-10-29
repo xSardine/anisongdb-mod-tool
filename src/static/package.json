@@ -1,0 +1,16 @@
+{
+  "name": "anisongdb-mod-tool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tarekraafat/autocomplete.js": "^10.2.7",
+    "bulma": "^0.9.4",
+    "sortablejs": "^1.15.0"
+  }
+}

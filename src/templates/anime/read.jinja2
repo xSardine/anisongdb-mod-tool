@@ -1,0 +1,8 @@
+{% extends "base.jinja2" %}
+{% block body %}
+  <h1 class="title is-4 is-spaced">Anime List</h1>
+  {% include "anime/includes/forms/anime_search.jinja2" %}
+  {% with data=animes, disable_add=True, paginated=True %}
+    {% include "components/table/table.jinja2" %}
+  {% endwith %}
+{% endblock body %}

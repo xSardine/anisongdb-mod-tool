@@ -1,0 +1,8 @@
+{% extends "base.jinja2" %}
+{% block body %}
+  <h1 class="title is-4 is-spaced">Songs List</h1>
+  {% include "songs/includes/forms/song_search.jinja2" %}
+  {% with data=songs, disable_add=True, paginated=True %}
+    {% include "components/table/table.jinja2" %}
+  {% endwith %}
+{% endblock body %}

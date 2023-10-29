@@ -1,0 +1,55 @@
+<div class="columns is-multiline">
+    {% for line_up in artist.line_ups %}
+        <div class="column is-6">
+            <!-- List headers -->
+            <br />
+            <br />
+            <center>
+                <label class="label is-medium">Line up #{{ line_up.id }}</label>
+                <button class="button is-small is-danger"
+                        onclick="removeLineUp({{ line_up.id }})"
+                        {% if line_up.members %}title="Please remove all members first" disabled{% endif %}>
+                    Remove line up
+                </button>
+            </center>
+            <br />
+            <div class="columns">
+                <div class="column is-4">
+                    <label class="label is-small">Name</label>
+                </div>
+                <div class="column is-4">
+                    <label class="label is-small">Line-up</label>
+                </div>
+            </div>
+            <!-- Members list -->
+            <ul id="member-list-{{ line_up.id }}">
+                {% for link_artist_line_up in line_up.members %}
+                    <li class="artist-item" data-id="{{ link_artist_line_up.id }}">
+                        <div class="columns">
+                            {% with link_id=link_artist_line_up.id,
+                                link_id_artist=link_artist_line_up.id_member,
+                                artist_name=link_artist_line_up.member.artist_names[0].artist_name,
+                                id_line_up=link_artist_line_up.id_member_line_up,
+                                role_type=link_artist_line_up.role_type.role_type,
+                                line_up_members=link_artist_line_up.member_line_up.members,
+                                remove_function="removeLineUpMember" %}
+                                {% include "artists/includes/item_artist.jinja2" %}
+                            {% endwith %}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+            <br />
+            <!-- Add Member form  TODO go through wtform ? -->
+            <div class="columns">
+                {% with idElement = line_up.id %}
+                    {% include "components/artist_search.jinja2" %}
+                {% endwith %}
+                <div class="column">
+                    <button class="button is-link is-small"
+                            onclick="addLineUpMember('{{ line_up.id }}')">add member</button>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

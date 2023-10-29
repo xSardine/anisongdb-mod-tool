@@ -1,0 +1,38 @@
+{% if paginated %}
+    {% include "components/table/pagination.jinja2" %}
+{% endif %}
+<div class="table-container">
+    <table class="table is-bordered is-fullwidth">
+        <thead>
+            <tr>
+                {% if not disable_edit %}<th>Actions</th>{% endif %}
+                {% for key in data[0] %}
+                    {% if keep_ids or ("id" not in key or key == "id") %}<th>{{ key }}</th>{% endif %}
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for elt in data %}
+                <tr>
+                    {% if not disable_edit %}
+                        <td>
+                            <a href="{{ elt.id }}" target="_self">
+                                <button class="button is-link is-small">edit</button>
+                            </a>
+                        </td>
+                    {% endif %}
+                    {% for key in elt %}
+                        {% if keep_ids or ("id" not in key or key == "id") %}<td>{{ elt[key] }}</td>{% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if not disable_add %}
+        <a href="create">
+            <button class="button is-link">add</button>
+        </a>
+    {% endif %}
+</div>
+<link rel="stylesheet"
+      href="{{ url_for('/.static_file', filename='css/table.css') }}" />

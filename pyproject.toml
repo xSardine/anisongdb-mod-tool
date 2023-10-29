@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "anisongdb-mod-tool"
+version = "0.1.0"
+description = ""
+authors = ["xSardine"]
+license = "GPLv3"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Flask = "^2.3.1"
+Flask-SQLAlchemy = "^3.0.3"
+flask-dance = "^6.2.0"
+flask-wtf = "^1.1.1"
+requests = "^2.28.2"
+python-dotenv = "^1.0.0"
+flask-caching = "^2.1.0"
+waitress = "^2.1.2"
+wtforms-alchemy = "^0.18.0"
+psycopg2 = "^2.9.9"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+blacken-docs = "^1.13.0"
+flake8 = "^6.0.0"
+autoflake = "^2.1.1"
+djlint = "^1.34.0"
+pytest = "^7.3.1"
+pre-commit = "^3.2.2"
+
+[tool.djlint]
+ignore="H008,H021"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

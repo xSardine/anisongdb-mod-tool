@@ -1,0 +1,33 @@
+<form method="post">
+  {{ form.hidden_tag() }}
+  <div class="columns">
+    <!-- id_artist_type -->
+    <div class="column is-3">
+      <div class="field">
+        <label class="label" for="id_artist_type">Artist Type</label>
+        <div class="select">
+          <div class="control">{{ form.id_artist_type }}</div>
+        </div>
+        {% for error in form.id_artist_type.errors %}<span class="errors">{{ error }}</span>{% endfor %}
+      </div>
+    </div>
+    <!-- artist_disambiguation -->
+    <div class="column">
+      <div class="field">
+        <label class="label" for="artist_disambiguation">Disambiguation</label>
+        {{ form.artist_disambiguation(class="input") }}
+        {% for error in form.artist_disambiguation.errors %}<span class="errors">{{ error }}</span>{% endfor %}
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="field is-grouped">
+    <div class="control">
+      <button type="submit" class="button is-link">Save Changes</button>
+    </div>
+    <div class="control">
+      <button type="reset" class="button is-link is-light">Reset form</button>
+    </div>
+  </div>
+</form>
+<br />
